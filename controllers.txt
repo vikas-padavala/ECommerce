@@ -1,2 +1,0 @@
-this is a sample text in the controller.txt file
-to test the git hub
