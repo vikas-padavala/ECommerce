@@ -1,5 +1,11 @@
 package com.ecom.productservice.services;
 
+import java.util.List;
+
+import com.ecom.productservice.fakestoreapi.FakeStoreProductResponse;
+
 public interface ProductService {
-    String getProductById(Integer productId);
+    FakeStoreProductResponse getProductById(Integer productId);
+
+    List<FakeStoreProductResponse> getAllProducts();
 }
