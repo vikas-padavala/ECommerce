@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -46,7 +47,16 @@ public class ProductController {
     }
 
     @PostMapping("/")
-    public String postProduct(@RequestBody CreateProductRequestDTO dto) {
-        return "the product has been created " + dto.getName();
+    public CreateProductRequestDTO postProduct(@RequestBody CreateProductRequestDTO dto) {
+        return dto;
+    }
+
+    @PatchMapping("/{productId}")
+    public ResponseEntity<FakeStoreProductResponse> patchProduct(@PathVariable("productId") Integer productId, @RequestBody CreateProductRequestDTO dto)
+    {
+        System.out.println("holla komostas!!");
+        System.out.println(dto);
+        FakeStoreProductResponse data = productService.patchProduct(productId, dto);
+        return new ResponseEntity<FakeStoreProductResponse>(data, HttpStatus.ACCEPTED);
     }
 }
