@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-public class CreateProductRequestDTO {
+public class ProductRequestDTO {
     private String title;
     private String description;
     private String image;

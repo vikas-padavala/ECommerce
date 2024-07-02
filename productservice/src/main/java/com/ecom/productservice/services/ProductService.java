@@ -2,15 +2,13 @@ package com.ecom.productservice.services;
 
 import java.util.List;
 
-import com.ecom.productservice.dto.CreateProductRequestDTO;
-import com.ecom.productservice.fakestoreapi.FakeStoreProductResponse;
+import com.ecom.productservice.models.Product;
 
 public interface ProductService {
-    FakeStoreProductResponse getProductById(Integer productId);
+    Product getProductById(Integer productId);
 
-    List<FakeStoreProductResponse> getAllProducts();
+    List<Product> getAllProducts();
 
-    FakeStoreProductResponse patchProduct(Integer productId, CreateProductRequestDTO dto);
+    Product patchProduct(Integer productId, Product dto) throws Exception;
 
-    // FakeStoreProductResponse patchProduct(Integer productId, )
 }

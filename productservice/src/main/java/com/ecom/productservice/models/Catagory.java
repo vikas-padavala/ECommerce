@@ -1,5 +1,5 @@
 package com.ecom.productservice.models;
 
-public class Catagory {
+public class Catagory extends BaseModel{
 
 }

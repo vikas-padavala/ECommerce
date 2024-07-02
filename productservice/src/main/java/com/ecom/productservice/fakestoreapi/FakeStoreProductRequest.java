@@ -11,5 +11,4 @@ public class FakeStoreProductRequest {
     private String description;
     private String image;
     private String catagory;
-
 }
