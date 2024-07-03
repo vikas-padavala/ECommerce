@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Service;
+
+import com.ecom.productservice.fakeStoreClient.FakeStoreClient;
 import com.ecom.productservice.fakestoreapi.FakeStoreProductRequest;
 import com.ecom.productservice.fakestoreapi.FakeStoreProductResponse;
 import com.ecom.productservice.mapper.ProductMapper;
@@ -18,16 +20,14 @@ import com.ecom.productservice.utility.HttpUtil;
 public class ProductServiceImpl implements ProductService {
 
         @Autowired
-        private RestTemplateBuilder restTemplateBuilder;
+        private FakeStoreClient fakeStoreClient;
+
+        @Autowired
+        RestTemplateBuilder restTemplateBuilder;
 
         @Override
         public Product getProductById(Integer productId) {
-                // System.out.println("this it the request!!!!" + productId);
-                FakeStoreProductResponse fsprdto = restTemplateBuilder.build()
-                                .getForEntity("https://fakestoreapi.com/products/{productId}",
-                                                FakeStoreProductResponse.class,
-                                                productId)
-                                .getBody();
+                FakeStoreProductResponse fsprdto = fakeStoreClient.getProductById(productId);
                 return ProductMapper.getProductFromFakeStoreProduct(fsprdto);
         }
 
